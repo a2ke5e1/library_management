@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import csv
 
 
 class Books:
@@ -39,22 +40,29 @@ class Books:
     def get_all(self, formed=False):
         get_query = f"SELECT * FROM {self.__table}"
         if formed:
+
             return pd.read_sql_query(get_query, self.__conn)
         return self.__conn.execute(get_query).fetchall()
 
-    def get(self,size=1,  formed=False):
-        get_query = f"SELECT * FROM {self.__table}"
-        if formed:
-            return pd.read_sql_query(get_query, self.__conn)
-        return self.__conn.execute(get_query).fetchmany(size)
+    def get(self, size=1, formed=False):
+        if type(size) == type(1):
+            get_query = f"SELECT * FROM {self.__table} LIMIT {size}"
+            if formed:
+                return pd.read_sql_query(get_query, self.__conn)
+            return self.__conn.execute(get_query).fetchmany(size)
 
     def delete(self, book_id):
         self.__conn.execute(f"DELETE  FROM {self.__table} WHERE book_id = :book_id", {
             "book_id": book_id,
         })
+        self.__conn.commit()
 
     def destroy_table(self):
         self.__conn.execute(f"DROP TABLE {self.__table}")
 
-
-
+    def add_sample_data(self):
+        with open("books.csv", "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                x = str(row).split(",")
+                self.add(x[10][2:-1], x[5][2:-1], x[5][2:-1])
