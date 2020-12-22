@@ -40,7 +40,6 @@ class Books:
     def get_all(self, formed=False):
         get_query = f"SELECT * FROM {self.__table}"
         if formed:
-
             return pd.read_sql_query(get_query, self.__conn)
         return self.__conn.execute(get_query).fetchall()
 
@@ -50,6 +49,13 @@ class Books:
             if formed:
                 return pd.read_sql_query(get_query, self.__conn)
             return self.__conn.execute(get_query).fetchmany(size)
+
+    def get_byId(self, id=1, formed=False):
+        if type(id) == type(1):
+            get_query = f"SELECT * FROM {self.__table} WHERE book_id = {id}"
+            if formed:
+                return pd.read_sql_query(get_query, self.__conn)
+            return self.__conn.execute(get_query).fetchone()
 
     def delete(self, book_id):
         self.__conn.execute(f"DELETE  FROM {self.__table} WHERE book_id = :book_id", {
@@ -65,4 +71,6 @@ class Books:
             reader = csv.reader(file)
             for row in reader:
                 x = str(row).split(",")
-                self.add(x[10][2:-1], x[5][2:-1], x[5][2:-1])
+                if x[10][2:-1] == "title":
+                    continue
+                self.add(x[10][2:-1], x[7][2:-1], x[5][2:-1])
