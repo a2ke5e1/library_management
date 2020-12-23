@@ -50,7 +50,7 @@ class Books:
                 return pd.read_sql_query(get_query, self.__conn)
             return self.__conn.execute(get_query).fetchmany(size)
 
-    def get_range(self,back, next, formed=False):
+    def get_range(self, back, next, formed=False):
         if type(back) == type(1) and type(next) == type(1):
             get_query = f"SELECT * FROM {self.__table} WHERE book_id BETWEEN {back} AND {next}"
             if formed:

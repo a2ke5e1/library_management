@@ -42,6 +42,21 @@ def console_page2():
             pass
 
 
+def console_page3():
+    book_name = str(input("Enter Book Name $/>"))
+    book_author = str(input("Enter Book Author $/>"))
+    book_isbn = str(input("Enter Book ISBN Number $/>"))
+    Books().add(book_name, book_author, book_isbn)
+
+    print(f"Update Records Successfully")
+
+
+def console_page4():
+    id = int(input("Enter Book Id $/> ").strip().lower())
+    Books().delete(id)
+    print(f"Deleted Record With ID {id}")
+
+
 def reset_console():
     Books().destroy_table()
     Books().create_database()
@@ -54,6 +69,8 @@ Library Management | v{version_code}
 ====================================
 1. View All Books.
 2. Find Book By ID.
+3. Add Book
+4. Delete Book 
 
 reset - Resets Database
 """)
@@ -64,6 +81,10 @@ while True:
         console_page1()
     elif x == "2":
         console_page2()
+    elif x == "3":
+        console_page3()
+    elif x == "4":
+        console_page4()
     elif x == "reset":
         reset_console()
     if x == "exit":
