@@ -1,31 +1,32 @@
-version_code = 0.01
 from db import Books
+
+version_code = 0.01
 
 
 def console_page1():
-    next = 10
+    next_page = 10
     back = 0
     print(Books().get(10, formed=True))
     print("b-back     n-next")
 
     while True:
 
-        x = str(input("View All Books $/>")).strip().lower()
-        if x == "n":
-            next = next + 10
+        inp = str(input("View All Books $/>")).strip().lower()
+        if inp == "n":
+            next_page = next_page + 10
             back = back + 10
 
-        elif x == "b":
+        elif inp == "b":
             if back == 0:
                 break
             else:
                 back = back - 10
-                next = next - 10
+                next_page = next_page - 10
 
-        elif x == "bb":
+        elif inp == "bb":
             break
 
-        print(Books().get_range(back, next, formed=True))
+        print(Books().get_range(back, next_page, formed=True))
         print("b-back     n-next")
 
 
