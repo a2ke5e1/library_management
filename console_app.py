@@ -63,29 +63,32 @@ def reset_console():
     Books().add_sample_data()
     print("Reset Successful.")
 
+def app_console():
+    print(f"""
+    Library Management | v{version_code} 
+    ====================================
+    1. View All Books.
+    2. Find Book By ID.
+    3. Add Book
+    4. Delete Book 
 
-print(f"""
-Library Management | v{version_code} 
-====================================
-1. View All Books.
-2. Find Book By ID.
-3. Add Book
-4. Delete Book 
+    reset - Resets Database
+    """)
 
-reset - Resets Database
-""")
+    while True:
+        x = str(input("$/> ")).strip().lower()
+        if x == "1":
+            console_page1()
+        elif x == "2":
+            console_page2()
+        elif x == "3":
+            console_page3()
+        elif x == "4":
+            console_page4()
+        elif x == "reset":
+            reset_console()
+        if x == "exit":
+            break
 
-while True:
-    x = str(input("$/> ")).strip().lower()
-    if x == "1":
-        console_page1()
-    elif x == "2":
-        console_page2()
-    elif x == "3":
-        console_page3()
-    elif x == "4":
-        console_page4()
-    elif x == "reset":
-        reset_console()
-    if x == "exit":
-        break
+if __name__ == "__main__" :
+    app_console()

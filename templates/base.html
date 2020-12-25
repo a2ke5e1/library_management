@@ -33,7 +33,7 @@
                     style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                 print
             </button>
-            <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+            <button onclick="openConsole()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                     aria-label="Open Console Version"
                     style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                 <img src="/assets/console.svg">
@@ -47,5 +47,17 @@
 
 </div>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>
+
+    function openConsole() {
+         var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "/console", false ); // false for synchronous request
+        xmlHttp.send( null );
+
+         xmlHttp.responseText;
+        window.open('', '_self', ''); window.close();
+    }
+
+</script>
 </body>
 </html>
