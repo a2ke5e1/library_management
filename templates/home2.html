@@ -1,0 +1,135 @@
+{% extends "base2.html" %}
+{% block body %}
+
+<style>
+    :root {
+         --mdc-theme-primary: #fcb8ab;
+         --mdc-theme-secondary: #feeae6;
+    }
+    .mCard {
+        background-color: #121212;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        max-width: 23rem;
+    }
+    .my-card-title {
+         padding-left: 20px;
+         color: #ffffff;
+    }
+    .my-card-content {
+         padding-left: 20px;
+         padding-top: 15px;
+         padding-bottom: 25px;
+         color: #dbdbdb;
+    }
+
+    .mdc-layout-grid__cell {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mdc-layout-grid {
+        margin-left: auto;
+        max-width: 70rem;
+        margin-right: auto;
+    }
+
+
+
+
+
+</style>
+
+
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell">
+            <div class="mCard mdc-elevation--z2" style="">
+                <div>
+                    <h2 class="demo-card__title my-card-title mdc-typography mdc-typography--headline6">Books</h2>
+                </div>
+                <div>
+                    <img style="max-height:100%; max-width:100%;"
+                         src="/assets/library_books.jpg"></img>
+                    <div class="demo-card__secondary mdc-typography mdc-typography--body2 my-card-content">View and
+                        manage books in the Library.
+                    </div>
+                </div>
+                <div class="mdc-card__actions">
+                    <div class="mdc-card__action-buttons">
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> View
+                        </button>
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> Manage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__cell">
+            <div class="mCard mdc-elevation--z2" style="">
+                <div>
+                    <h2 class="demo-card__title my-card-title mdc-typography mdc-typography--headline6">Books</h2>
+                </div>
+                <div>
+                    <img style="max-height:100%; max-width:100%;"
+                         src="/assets/library_books.jpg"></img>
+                    <div class="demo-card__secondary mdc-typography mdc-typography--body2 my-card-content">View and
+                        manage books in the Library.
+                    </div>
+                </div>
+                <div class="mdc-card__actions">
+                    <div class="mdc-card__action-buttons">
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> View
+                        </button>
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> Manage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__cell">
+            <div class="mCard mdc-elevation--z2" style="">
+                <div>
+                    <h2 class="demo-card__title my-card-title mdc-typography mdc-typography--headline6">Books</h2>
+                </div>
+                <div>
+                    <img style="max-height:100%; max-width:100%;"
+                         src="/assets/library_books.jpg"></img>
+                    <div class="demo-card__secondary mdc-typography mdc-typography--body2 my-card-content">View and
+                        manage books in the Library.
+                    </div>
+                </div>
+                <div class="mdc-card__actions">
+                    <div class="mdc-card__action-buttons">
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> View
+                        </button>
+                        <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> Manage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function viewBooks() {
+        window.location = "/books/view"
+    }
+
+
+
+
+
+
+</script>
+
+{% endblock %}
