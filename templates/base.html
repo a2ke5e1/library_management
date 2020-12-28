@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
 
-        body {background-color:transparent;}
-
 
 
 
@@ -21,7 +19,12 @@
 <header style="top: 0px; left : 0px">
     <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <span class="mdc-top-app-bar__title">Library Manager</span></section>
+             <button onclick="backPage()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                    aria-label="Open Console Version"
+                    style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
+                arrow_back
+            </button>
+            <span id="title" class="mdc-top-app-bar__title">Library Manager</span></section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
             <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                     aria-label="Download"
@@ -57,6 +60,13 @@
          xmlHttp.responseText;
         window.open('', '_self', ''); window.close();
     }
+
+    function setTitle(title) {
+        document.getElementById('title').innerText = title;
+    }
+
+    {% block scripts %}
+    {% endblock %}
 
 </script>
 </body>
