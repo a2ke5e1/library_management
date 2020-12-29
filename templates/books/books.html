@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block body %}
+
+<style>
+    :root {
+         --mdc-theme-primary: #fcb8ab;
+         --mdc-theme-secondary: #feeae6;
+    }
+
+    .mdc-data-table__header-cell  {
+        background-color: #121212!important;
+        color: #ffffff;
+    }
+
+    .mdc-data-table__cell  {
+        color: #ffffff;
+    }
+
+    .mdc-data-table {
+        background-color: #121212;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-left: auto;
+        max-width: 70rem;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 98vh;
+    }
+
+
+
+
+
+
+</style>
+
+
+<div class="mdc-data-table">
+    <div class="mdc-data-table__table-container">
+        <table class="mdc-data-table__table" style="background-color: #121212!important;">
+            <thead>
+            <tr class="mdc-data-table__header-row">
+                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Book ID</th>
+                <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Book Title</th>
+                <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Book Author</th>
+                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Book ISBN</th>
+                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody class="mdc-data-table__content" style="background-color: #121212;">
+
+            {% for book in books %}
+
+            <tr class="mdc-data-table__row">
+                <th class="mdc-data-table__cell" scope="row">{{book[0]}}</th>
+                <td class="mdc-data-table__cell ">{{book[1]}}</td>
+                <td class="mdc-data-table__cell ">{{book[2]}}</td>
+                <td class="mdc-data-table__cell">{{book[3]}}</td>
+                <td class="mdc-data-table__cell">  <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                                class="mdc-button__ripple"></span> Edit
+                        </button></td>
+            </tr>
+
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{%block scripts%}
+
+function backPage() {
+    window.location = "/"
+}
+
+{% endblock %}
+

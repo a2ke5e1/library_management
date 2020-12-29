@@ -1,6 +1,7 @@
 import webview
 from flask import Flask, render_template, request
 from console_app import app_console
+from db import Books
 
 
 def app(debug=False):
@@ -16,7 +17,7 @@ def app(debug=False):
 
     @server.route("/books/view")
     def booksView():
-        return render_template("/books/books.html")
+        return render_template("/books/books.html", books=Books().get_all())
 
     @server.route("/", methods=['GET', 'POST'])
     def home():
