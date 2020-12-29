@@ -20,7 +20,7 @@ def app(debug=False):
 
     @server.route("/", methods=['GET', 'POST'])
     def home():
-        return render_template("/home2.html")
+        return render_template("/home.html")
 
     @server.route("/console")
     def console():
