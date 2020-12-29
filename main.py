@@ -1,5 +1,5 @@
 import webview
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from console_app import app_console
 from db import Books
 
@@ -15,9 +15,20 @@ def app(debug=False):
         url=server,
     )
 
-    @server.route("/books/view")
+    @server.route("/books/view/")
     def booksView():
-        return render_template("/books/books.html", books=Books().get_all())
+        return redirect('/books/view/1-10')
+
+    @server.route("/books/view/<int:back>-<int:next>")
+    def booksViewWithRange(back, next):
+
+        if next < back :
+            return redirect('/books/view/1-10')
+
+        if len(Books().get_range(back, next)) == 0:
+            return redirect(f'/books/view/{back - 10}-{next - 10}')
+
+        return render_template("/books/books.html", books=Books().get_range(back, next), back=back, next=next)
 
     @server.route("/", methods=['GET', 'POST'])
     def home():

@@ -31,13 +31,36 @@ def console_page1():
 
 
 def console_page2():
+
+    print("""
+    Find Book : 
+    1. By ID
+    2. Book Name
+    3. Book Author
+    4. Book ISBN Nutmber
+    
+    """)
+
     while True:
-        y = str(input("Book ID $/> ")).strip().lower()
+        y = str(input("Find By $/> ")).strip().lower()
+
+
         if y == "b":
             break
         try:
             y = int(y)
-            print(Books().get_byId(y, formed=True))
+            if y == 1:
+                x = input("Enter ID $/>")
+                print(Books().get_byId(x, formed=True))
+            elif y == 2:
+                x = input("Enter Book Name $/>")
+                print(Books().get_byName(x, formed=True))
+            elif y == 3:
+                x = input("Enter Book Author $/>")
+                print(Books().get_byAuthor(x, formed=True))
+            elif y == 4:
+                x = input("Enter Book ISBN $/>")
+                print(Books().get_byISBN(x, formed=True))
         except ValueError:
             pass
 
@@ -63,17 +86,25 @@ def reset_console():
     Books().add_sample_data()
     print("Reset Successful.")
 
-def app_console():
-    print(f"""
-    Library Management | v{version_code} 
-    ====================================
-    1. View All Books.
-    2. Find Book By ID.
-    3. Add Book
-    4. Delete Book 
 
-    reset - Resets Database
-    """)
+def help():
+    print(f"""
+       Library Management | v{version_code} 
+       ====================================
+       1. View All Books.
+       2. Find Book.
+       3. Add Book
+       4. Delete Book 
+       
+       
+       
+       
+       help - Get Help
+       reset - Resets Database
+       """)
+
+def app_console():
+    help()
 
     while True:
         x = str(input("$/> ")).strip().lower()
@@ -87,6 +118,8 @@ def app_console():
             console_page4()
         elif x == "reset":
             reset_console()
+        elif x == "help":
+            help()
         if x == "exit":
             break
 

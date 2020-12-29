@@ -29,6 +29,21 @@
         min-height: 98vh;
     }
 
+    .title {
+        background-color: #121212;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-left: auto;
+        max-width: 70rem;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+
+
 
 
 
@@ -39,6 +54,30 @@
 
 <div class="mdc-data-table">
     <div class="mdc-data-table__table-container">
+        <div class="mdc-top-app-bar title" style="top: 0px; ">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <button onclick="home()" class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                            style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
+                        arrow_back
+                    </button>
+                    <span class="mdc-top-app-bar__title">List Of Books</span></section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                    <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                            aria-label="Download"
+                            style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
+                        search
+                    </button>
+
+                    <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                            aria-label="Bookmark this page"
+                            style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
+                        add
+                    </button>
+                </section>
+            </div>
+        </div>
+
         <table class="mdc-data-table__table" style="background-color: #121212!important;">
             <thead>
             <tr class="mdc-data-table__header-row">
@@ -58,9 +97,11 @@
                 <td class="mdc-data-table__cell ">{{book[1]}}</td>
                 <td class="mdc-data-table__cell ">{{book[2]}}</td>
                 <td class="mdc-data-table__cell">{{book[3]}}</td>
-                <td class="mdc-data-table__cell">  <button class="mdc-button mdc-card__action mdc-card__action--button"><span
-                                class="mdc-button__ripple"></span> Edit
-                        </button></td>
+                <td class="mdc-data-table__cell">
+                    <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                            class="mdc-button__ripple"></span> Edit
+                    </button>
+                </td>
             </tr>
 
             {% endfor %}
@@ -68,16 +109,49 @@
 
             </tbody>
         </table>
+
+
+    </div>
+
+    <div style="margin-left: auto; margin-right: auto;">
+
+        <button onclick="backPage({{back}},{{next}})" class="mdc-button mdc-card__action mdc-card__action--button"><span
+                class="mdc-button__ripple"></span> Previous
+        </button>
+        <span class="mdc-typography--button" style="color: #ffffff;">{{ back }}-{{ next }}</span>
+        <button onclick="nextPage({{back}},{{next}})" class="mdc-button mdc-card__action mdc-card__action--button"><span
+                class="mdc-button__ripple"></span> Next
+        </button>
+
     </div>
 </div>
 
-{% endblock %}
 
-{%block scripts%}
-
-function backPage() {
-    window.location = "/"
+<script>
+function home() {
+window.location = "/"
 }
 
+function nextPage(back,next) {
+    back = back + 10
+    next = next + 10
+    window.location = `/books/view/${back}-${next}`
+}
+
+function backPage(back,next) {
+
+    if (back != "1") {
+        back = back - 10
+        next = next - 10
+        window.location = `/books/view/${back}-${next}`
+    }
+
+
+}
+</script>
+
+
 {% endblock %}
+
+
 

@@ -57,12 +57,30 @@ class Books:
                 return pd.read_sql_query(get_query, self.__conn)
             return self.__conn.execute(get_query).fetchall()
 
-    def get_byId(self, id=1, formed=False):
+    def get_byId(self, id, formed=False):
         if type(id) == type(1):
             get_query = f"SELECT * FROM {self.__table} WHERE book_id = {id}"
             if formed:
                 return pd.read_sql_query(get_query, self.__conn)
-            return self.__conn.execute(get_query).fetchone()
+            return self.__conn.execute(get_query).fetchall()
+
+    def get_byName(self, name, formed=False):
+        get_query = f"SELECT * FROM {self.__table} WHERE book_name LIKE '%{name}%'"
+        if formed:
+            return pd.read_sql_query(get_query, self.__conn)
+        return self.__conn.execute(get_query).fetchall()
+
+    def get_byAuthor(self, author, formed=False):
+        get_query = f"SELECT * FROM {self.__table} WHERE book_author LIKE '%{author}%'"
+        if formed:
+            return pd.read_sql_query(get_query, self.__conn)
+        return self.__conn.execute(get_query).fetchall()
+
+    def get_byISBN(self, isbn, formed=False):
+        get_query = f"SELECT * FROM {self.__table} WHERE book_isbn LIKE '%{isbn}%'"
+        if formed:
+            return pd.read_sql_query(get_query, self.__conn)
+        return self.__conn.execute(get_query).fetchall()
 
     def delete(self, book_id):
         self.__conn.execute(f"DELETE  FROM {self.__table} WHERE book_id = :book_id", {
