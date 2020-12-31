@@ -91,6 +91,9 @@ class Books:
             return pd.read_sql_query(get_query, self.__conn)
         return self.__conn.execute(get_query).fetchall()
 
+    def search(self, search_query):
+        return self.__conn.execute(f"SELECT * FROM {self.__table} WHERE book_name LIKE '%{search_query}%' OR book_author LIKE '%{search_query}%' OR book_isbn LIKE '%{search_query}%'").fetchall()
+
     def delete(self, book_id):
         self.__conn.execute(f"DELETE  FROM {self.__table} WHERE book_id = :book_id", {
             "book_id": book_id,

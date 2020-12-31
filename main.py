@@ -62,6 +62,10 @@ def app(debug=False):
     def home():
         return render_template("/home.html")
 
+    @server.route("/books/search-<search_term>", methods=['GET'])
+    def search(search_term):
+        return render_template('/books/books.html', books=Books().search(search_term))
+
     @server.route("/console")
     def console():
         app_console()

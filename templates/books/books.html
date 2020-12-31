@@ -63,7 +63,15 @@
                     </button>
                     <span class="mdc-top-app-bar__title">List Of Books</span></section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                    <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+
+                    <div class="mdc-text-field">
+
+                          <input style="color: white;" class="mdc-text-field__input" id="search_input">
+                          <div class="mdc-line-ripple"></div>
+
+                        </div>
+
+                    <button onclick="search()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                             aria-label="Download"
                             style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                         search
@@ -78,7 +86,7 @@
             </div>
         </div>
 
-        <table class="mdc-data-table__table" style="background-color: #121212!important;">
+        <table class="mdc-data-table__table" style="margin-top: 120px; background-color: #121212!important;">
             <thead>
             <tr class="mdc-data-table__header-row">
                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Book ID</th>
@@ -156,6 +164,14 @@ function updateBook(book_id) {
 function goAddBook() {
     window.location = '/books/add'
 }
+
+function search() {
+
+
+window.location = `/books/search-${document.getElementById('search_input').value}`
+
+}
+
 </script>
 
 
