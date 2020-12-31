@@ -49,6 +49,7 @@
 
 
 
+
 </style>
 
 
@@ -57,7 +58,8 @@
         <div class="mdc-top-app-bar title" style="top: 0px; ">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <button onclick="home()" class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                    <button onclick="home()"
+                            class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                             style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                         arrow_back
                     </button>
@@ -66,18 +68,20 @@
 
                     <div class="mdc-text-field">
 
-                          <input style="color: white;" class="mdc-text-field__input" id="search_input">
-                          <div class="mdc-line-ripple"></div>
+                        <input style="color: white;" class="mdc-text-field__input" id="search_input">
+                        <div class="mdc-line-ripple"></div>
 
-                        </div>
+                    </div>
 
-                    <button onclick="search()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                    <button onclick="search()"
+                            class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                             aria-label="Download"
                             style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                         search
                     </button>
 
-                    <button onclick="goAddBook()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                    <button onclick="goAddBook()"
+                            class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                             aria-label="Bookmark this page"
                             style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                         add
@@ -106,7 +110,8 @@
                 <td class="mdc-data-table__cell ">{{book[2]}}</td>
                 <td class="mdc-data-table__cell">{{book[3]}}</td>
                 <td class="mdc-data-table__cell">
-                    <button onclick="updateBook({{book[0]}})" class="mdc-button mdc-card__action mdc-card__action--button"><span
+                    <button onclick="updateBook({{book[0]}})"
+                            class="mdc-button mdc-card__action mdc-card__action--button"><span
                             class="mdc-button__ripple"></span> Edit
                     </button>
                 </td>
@@ -171,6 +176,7 @@ function search() {
 window.location = `/books/search-${document.getElementById('search_input').value}`
 
 }
+
 
 </script>
 
