@@ -43,6 +43,15 @@ class Books:
             return pd.read_sql_query(get_query, self.__conn)
         return self.__conn.execute(get_query).fetchall()
 
+    def update_byId(self, book_id, book_name, book_author, book_isbn):
+        self.__conn.execute(f"UPDATE {self.__table} SET book_name = :book_name, book_author = :book_author ,book_isbn = :book_isbn WHERE book_id = :book_id", {
+                "book_id": book_id,
+                "book_name": book_name,
+                "book_author": book_author,
+                "book_isbn": book_isbn,
+            })
+        self.__conn.commit()
+
     def get(self, size=1, formed=False):
         if type(size) == type(1):
             get_query = f"SELECT * FROM {self.__table} LIMIT {size}"
@@ -62,7 +71,7 @@ class Books:
             get_query = f"SELECT * FROM {self.__table} WHERE book_id = {id}"
             if formed:
                 return pd.read_sql_query(get_query, self.__conn)
-            return self.__conn.execute(get_query).fetchall()
+            return self.__conn.execute(get_query).fetchone()
 
     def get_byName(self, name, formed=False):
         get_query = f"SELECT * FROM {self.__table} WHERE book_name LIKE '%{name}%'"

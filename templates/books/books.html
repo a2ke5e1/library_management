@@ -69,7 +69,7 @@
                         search
                     </button>
 
-                    <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                    <button onclick="goAddBook()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
                             aria-label="Bookmark this page"
                             style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
                         add
@@ -98,7 +98,7 @@
                 <td class="mdc-data-table__cell ">{{book[2]}}</td>
                 <td class="mdc-data-table__cell">{{book[3]}}</td>
                 <td class="mdc-data-table__cell">
-                    <button class="mdc-button mdc-card__action mdc-card__action--button"><span
+                    <button onclick="updateBook({{book[0]}})" class="mdc-button mdc-card__action mdc-card__action--button"><span
                             class="mdc-button__ripple"></span> Edit
                     </button>
                 </td>
@@ -147,6 +147,14 @@ function backPage(back,next) {
     }
 
 
+}
+
+function updateBook(book_id) {
+    window.location = '/books/update/' + book_id
+}
+
+function goAddBook() {
+    window.location = '/books/add'
 }
 </script>
 

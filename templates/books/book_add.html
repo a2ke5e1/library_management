@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block body %}
+
+<style>
+    :root {
+         --mdc-theme-primary: #fcb8ab;
+         --mdc-theme-secondary: #feeae6;
+    }
+
+    .mdc-data-table__header-cell  {
+        background-color: #121212!important;
+        color: #ffffff;
+    }
+
+    .mdc-data-table__cell  {
+        color: cffffff;
+    }
+
+    .add-data {
+        background-color: #121212;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-left: auto;
+        max-width: 70rem;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 98vh;
+    }
+
+    .title {
+        background-color: #121212;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        margin-left: auto;
+        max-width: 70rem;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .mdc-text-field {
+        margin: 10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+<div class="add-data">
+
+    <div class="mdc-top-app-bar title" style="top: 0px; ">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button onclick="home()"
+                        class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+                        style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;">
+                    arrow_back
+                </button>
+                <span class="mdc-top-app-bar__title">Add a Books</span></section>
+
+        </div>
+    </div>
+
+    <form action="" method="post">
+
+        <div id="book_name_parent" class="mdc-text-field mdc-text-field--outlined">
+        <input style="color: white;" class="mdc-text-field__input" id="book_name"name="book_name">
+        <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+                <label for="book_name" style="color: #fcb8ab;" class="mdc-floating-label">Book Name</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+        </div>
+    </div>
+
+    <div id="book_author_parent" class="mdc-text-field mdc-text-field--outlined">
+        <input style="color: white;" class="mdc-text-field__input" id="book_author"name="book_author">
+        <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+                <label for="book_name" style="color: #fcb8ab;" class="mdc-floating-label">Book Author</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+        </div>
+    </div>
+
+    <div id="book_isbn_parent" class="mdc-text-field mdc-text-field--outlined">
+        <input style="color: white;" class="mdc-text-field__input" id="book_isbn"name="book_isbn">
+        <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+                <label for="book_name" style="color: #fcb8ab;" class="mdc-floating-label">Book ISBN</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+        </div>
+    </div>
+
+    <div style="margin : 10px">
+
+
+        <button onclick="nextPage({{back}},{{next}})" class="mdc-button mdc-card__action mdc-card__action--button"><span
+                class="mdc-button__ripple"></span> Add
+        </button>
+
+    </div>
+
+
+
+    </form>
+
+</div>
+
+
+<script>
+function home() {
+    window.location = "/books/view"
+}
+
+mdc.textField.MDCTextField.attachTo(document.querySelector('#book_name_parent'))
+mdc.textField.MDCTextField.attachTo(document.querySelector('#book_author_parent'))
+mdc.textField.MDCTextField.attachTo(document.querySelector('#book_isbn_parent'))
+
+
+
+
+
+</script>
+
+
+{% endblock %}
+
+
+

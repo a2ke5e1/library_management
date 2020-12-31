@@ -71,13 +71,34 @@ def console_page3():
     book_isbn = str(input("Enter Book ISBN Number $/>"))
     Books().add(book_name, book_author, book_isbn)
 
-    print(f"Update Records Successfully")
+    print(f"Added Records Successfully")
 
 
 def console_page4():
     id = int(input("Enter Book Id $/> ").strip().lower())
-    Books().delete(id)
-    print(f"Deleted Record With ID {id}")
+
+    print(f"Selected - {Books().get_byId(id)}")
+
+    book_name = str(input("Enter Book Name $/>"))
+    book_author = str(input("Enter Book Author $/>"))
+    book_isbn = str(input("Enter Book ISBN Number $/>"))
+    Books().update_byId(id,book_name, book_author, book_isbn)
+
+    print(f"Update Records Successfully")
+
+def console_page5():
+    id = int(input("Enter Book Id $/> ").strip().lower())
+
+    print(f"Selected - {Books().get_byId(id)}")
+
+    sure = (input("Are you sure? Yes(y) / No (n)").strip().lower())
+
+    if sure == "y":
+        Books().delete(id)
+        print(f"Deleted Record With ID {id}")
+    elif sure == "n":
+        pass
+
 
 
 def reset_console():
@@ -94,7 +115,8 @@ def help():
        1. View All Books.
        2. Find Book.
        3. Add Book
-       4. Delete Book 
+       4. Update Book
+       5. Delete Book 
        
        
        
@@ -116,6 +138,8 @@ def app_console():
             console_page3()
         elif x == "4":
             console_page4()
+        elif x == "5":
+            console_page5()
         elif x == "reset":
             reset_console()
         elif x == "help":
