@@ -4,9 +4,9 @@
 
 ## requirements 
 
-'bash 
+` 
 pip install -r requirements.txt
-'
+`
 
 main.py for GUI <br>
 console_app.py for Console 
